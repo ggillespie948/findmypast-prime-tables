@@ -26,5 +26,17 @@ namespace PrimeTablesTests
             Assert.Equal(expectedPrimes, primes);
         }
 
+        [Theory]
+        [InlineData(1)]
+        [InlineData(1000)]
+        [InlineData(10000)]
+        [InlineData(50000)]
+        [InlineData(50000000)]
+        public void GeneratePrimeNumbers_Expected_Length_Stress_Test(int expectedPrimeCount)
+        {
+            var generatedResults = PrimeNumberGenerator.GeneratePrimeNumbers(expectedPrimeCount);
+            Assert.Equal(expectedPrimeCount, generatedResults.Length);
+        }
+
     }
 }
