@@ -14,6 +14,8 @@ namespace PrimeTables
         /// <returns></returns>
         public static int[] GeneratePrimeNumbers(int nPrimes)
         {
+            if (nPrimes == 1) return new int[1] { 2 }; //nth prime estimation only works when asking for 2 or more primes
+
             // Make an estimation of the Nth prime number
             // https://stackoverflow.com/a/51851085/9355141
             // this answer helped me with the calculation
