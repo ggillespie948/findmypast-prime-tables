@@ -27,7 +27,7 @@ namespace PrimeTables
             //starting at the first prime number
             int prime = 2;
             
-            while (prime <= 25)
+            while (prime <= Math.Sqrt(maxCount))
             {
                 //eliminate remaining multiples of prime
                 Eliminate(sieveFlags, prime);
