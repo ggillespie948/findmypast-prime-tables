@@ -12,7 +12,7 @@ namespace PrimeTables
         /// </summary>
         /// <param name="nPrimes"></param>
         /// <returns></returns>
-        public static List<int> GeneratePrimeNumbers(int nPrimes)
+        public static int[] GeneratePrimeNumbers(int nPrimes)
         {
             // Make an estimation of the Nth prime number
             // https://stackoverflow.com/a/51851085/9355141
@@ -96,14 +96,19 @@ namespace PrimeTables
         /// <param name="sieveFlags"></param>
         /// <param name="maxCount"></param>
         /// <returns></returns>
-        private static List<int> GenerateListOfPrimes(bool[] sieveFlags, int maxCount)
+        private static int[] GenerateListOfPrimes(bool[] sieveFlags, int maxCount)
         {
-            List<int> primeNumbers = new List<int>();
+            //List<int> primeNumbers = new List<int>();
+            int[] primeNumbers = new int[maxCount];
+
+            int primeCount = 0;
             for (int i = 0; i < sieveFlags.Length; i++)
             {
                 if (sieveFlags[i])
                 {
-                    primeNumbers.Add(i);
+                    primeNumbers[primeCount] = i;
+                    primeCount++;
+                    if (primeCount == maxCount) return primeNumbers;
                 }
             }
             return primeNumbers;
