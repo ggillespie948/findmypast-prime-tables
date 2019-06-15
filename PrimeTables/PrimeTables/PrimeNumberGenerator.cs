@@ -14,10 +14,11 @@ namespace PrimeTables
         /// <returns></returns>
         public static List<int> GeneratePrimeNumbers(int nPrimes)
         {
-            //to do: calculate the what the highest nPrime value is and set that as maxCount
-            var maxCount = 12; //hardcode the max prime number +1 for now
-
-            bool[] sieveFlags = new bool[maxCount];
+            // Make an estimation of the Nth prime number
+            // https://stackoverflow.com/a/51851085/9355141
+            // this answer helped me with the calculation
+            var maxCount = 1 + nPrimes * (Math.Log(nPrimes) + Math.Log(Math.Log(nPrimes)));
+            bool[] sieveFlags = new bool[Convert.ToInt32(maxCount) + 1];
 
             //init sieve flags from 2 to maxCount
             for (int i = 2; i < sieveFlags.Length; i++)
@@ -47,7 +48,7 @@ namespace PrimeTables
                 prime = next;
             }
 
-            return GenerateListOfPrimes(sieveFlags, maxCount);
+            return GenerateListOfPrimes(sieveFlags, nPrimes);
         }
 
 
