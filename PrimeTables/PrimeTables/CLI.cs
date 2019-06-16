@@ -25,7 +25,7 @@ namespace PrimeTables
                         if (ValidateNumberArgument(args[1], out int nPrime))
                         {
                             var primeNumbers = PrimeNumberGenerator.GeneratePrimeNumbers(nPrime);
-                            // pass this to multiplication output table
+                            MultiplicationTableOutput.GenerateMultiplicationTable(primeNumbers);
                         }
                         else
                         {
