@@ -4,8 +4,6 @@ namespace PrimeTables
 {
     public class CLI
     {
-        private static readonly int[] PRIME_NUMBERS;
-
         static void Main(string[] args)
         {
             if (args.Length == 0)
@@ -24,8 +22,9 @@ namespace PrimeTables
                     {
                         if (ValidateNumberArgument(args[1], out int nPrime))
                         {
-                            var primeNumbers = PrimeNumberGenerator.GeneratePrimeNumbers(nPrime);
-                            MultiplicationTableOutput.GenerateMultiplicationTable(primeNumbers);
+                            int[] primeNumbers = PrimeNumberGenerator.GeneratePrimeNumbers(nPrime);
+                            int [,] primeMultiplicationTable = MultiplicationTableOutput.GenerateMultiplicationTable(primeNumbers);
+                            //do something with the output table of values
                         }
                         else
                         {

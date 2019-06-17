@@ -6,7 +6,7 @@ namespace PrimeTables
 {
     public static class MultiplicationTableOutput
     {
-        public static bool GenerateMultiplicationTable(int[] primeNumbers)
+        public static int[,] GenerateMultiplicationTable(int[] primeNumbers)
         {
             string outputString = "";
 
@@ -18,6 +18,9 @@ namespace PrimeTables
             {
                 lineBreak += "-";
             }
+
+            //initalise output array
+            var multiplicaitonTableElements = new int[primeNumbers.Length+1,primeNumbers.Length+1];
 
             Console.WriteLine("Prime Table Generation");
             Console.WriteLine(lineBreak);
@@ -40,6 +43,8 @@ namespace PrimeTables
                         else
                         {
                             outputString = string.Format("[{0}]", primeNumbers[x]);
+
+                            multiplicaitonTableElements[x + 1, y + 1] = primeNumbers[x];
                         }
                     }
                     else
@@ -47,11 +52,18 @@ namespace PrimeTables
                         if (x == -1)
                         {
                             outputString = string.Format("[{0}]", primeNumbers[y]);
+
+                            multiplicaitonTableElements[x+1, y+1] = primeNumbers[y];
                         }
                         else
                         {
                             if(x != -1 && y != -1)
-                                outputString = string.Format("{0}", primeNumbers[x] * primeNumbers[y]);
+                            {
+                                int multiplicationOutput = primeNumbers[x] * primeNumbers[y];
+                                outputString = string.Format("{0}|", multiplicationOutput);
+
+                                multiplicaitonTableElements[x+1, y+1] = multiplicationOutput;
+                            }
                         }
                     }
                     Console.Write(outputString.PadLeft(padding, ' '));
@@ -61,7 +73,7 @@ namespace PrimeTables
             }
 
             Console.WriteLine(lineBreak);
-            return true;
+            return multiplicaitonTableElements;
         }
     }
 }
