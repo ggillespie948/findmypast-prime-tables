@@ -11,7 +11,7 @@ namespace PrimeTablesTests
         [InlineData(new int[3] { 2, 3, 5 })]
         [InlineData(new int[5] { 2, 3, 5, 7, 11 })]
         [InlineData(new int[7] { 2, 3, 5, 7, 11, 13, 17 })]
-        public void GenerateMultiplicationTable_Returns_True(int[] nPrimes)
+        public void GenerateMultiplicationTable_Returns_ExpectedOutput(int[] nPrimes)
         {
             var foo = MultiplicationTableOutput.GenerateMultiplicationTable(nPrimes);
             Assert.Equal(foo, GetExpectedMultiplicationTable(nPrimes.Length));
