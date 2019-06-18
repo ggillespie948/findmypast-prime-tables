@@ -41,7 +41,7 @@ namespace PrimeTables
 
 
         /// <summary>
-        /// Iterate through the list of sieve flags and 
+        /// Iterate through the list of sieve flags and find the next index to process
         /// </summary>
         /// <param name="sieveFlags"></param>
         /// <param name="prime"></param>
@@ -100,7 +100,6 @@ namespace PrimeTables
         /// <returns></returns>
         private static int[] GenerateListOfPrimes(bool[] sieveFlags, int maxCount)
         {
-            //List<int> primeNumbers = new List<int>();
             int[] primeNumbers = new int[maxCount];
 
             int primeCount = 0;
