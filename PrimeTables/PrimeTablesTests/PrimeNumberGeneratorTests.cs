@@ -31,11 +31,36 @@ namespace PrimeTablesTests
         [InlineData(1000)]
         [InlineData(10000)]
         [InlineData(50000)]
+        [InlineData(1000000)]
+        [InlineData(10000000)]
         [InlineData(50000000)]
+        [InlineData(100000000)]
         public void GeneratePrimeNumbers_Expected_Length_Stress_Test(int expectedPrimeCount)
         {
             var generatedResults = PrimeNumberGenerator.GeneratePrimeNumbers(expectedPrimeCount);
             Assert.Equal(expectedPrimeCount, generatedResults.Length);
+        }
+
+        [Theory]
+        [InlineData(1)]
+        [InlineData(1000)]
+        [InlineData(10000)]
+        [InlineData(50000)]
+        public void GeneratePrimeNumbers_Always_Returns_Primes(int nPrimes)
+        {
+            var results = PrimeNumberGenerator.GeneratePrimeNumbers(nPrimes);
+            foreach(int i in results)
+            {
+                Assert.True(isPrime(i));
+            }
+        }
+
+        private bool isPrime(int num)
+        {
+            for (int i = 2; i < num; i++)
+                if (num % i == 0)
+                    return false;
+            return num == 1 ? false : true;
         }
 
     }
